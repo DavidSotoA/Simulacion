@@ -65,7 +65,7 @@ if Tipo==1
     
     %%% Se aplica la regresion multiple %%%
     
-    W=regresionMultiple(Xtrain,Ytrain,eta); %%% Se optienen los W coeficientes del polinomio
+    W=regresionMultiple(Xtrain,Ytrain,eta,Xtest,Ytest); %%% Se obtienen los W coeficientes del polinomio
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
