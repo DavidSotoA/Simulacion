@@ -4,10 +4,9 @@ close all
 clear all
 
 eta=0.1; %%% Taza de aprendizaje
-grado=4; %%% Grado del polinomio
+grado=5; %%% Grado del polinomio
 
-
-Tipo = 1;
+Tipo = 2;
 
 if Tipo==1
     

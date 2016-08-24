@@ -1,5 +1,9 @@
-function x2 = sigmoide(x)
+function S = sigmoide(X)
 
-    x2 = 1./(1 + exp(-x));
-
+        S=[];
+    for i=1:length(X)
+        xi=X(i);
+        S =[S, 1./(1 + exp(-xi))];
+    end
+    
 end
