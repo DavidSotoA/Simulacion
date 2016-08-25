@@ -86,9 +86,9 @@ elseif Tipo==2
     rng('default');
     
     a=(2*pi).*rand(250,1); %% se crean valores entre 0 y 2*pi
-    r=sqrt(rand(250,1))+2; %% se crean valores aleatorios entre 2 y 3
-    carac1=(3*r).*cos(a)-1; %% se generan valores entre -10 y 8
-    carac2=(3*r).*sin(a)+3; %% se generan valores entre -6 y 12
+    r=sqrt(rand(250,1))+2 %% se crean valores aleatorios entre 2 y 3
+    carac1=(3*r).*cos(a)-1 %% 
+    carac2=(3*r).*sin(a)+3; %%
     X1=[carac1,carac2]; %% se agregan las caracteristicas en X1
 
     a=(2*pi).*rand(250,1);%% se crean valores entre 0 y 2*pi
@@ -97,8 +97,8 @@ elseif Tipo==2
     carac2=(2*r).*sin(a)+3; %% se generan valores entre 3 y 5
     X2=[carac1,carac2]; %% se agregan las caracteristicas en X2
    
-%     figure(2)
-%     plot(X1(:,1),X1(:,2),'o',X2(:,1),X2(:,2),'*')
+    figure(2)
+    plot(X1(:,1),X1(:,2),'o',X2(:,1),X2(:,2),'*')
     
     X=[X1;X2]; %% se crea una matriz con los datos de entrada
     Y=[ones(250,1);zeros(250,1)]; %% los datos de salida tendran una columna de unos y una columna de ceros
