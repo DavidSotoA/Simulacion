@@ -84,7 +84,7 @@ elseif punto==4
 
     %%% Se aplica la regresi�n usando ventana de parzen  %%%
 
-    h=0.05;
+    h=10;
     Yesti=ventanaParzen(Xtest,Xtrain,Ytrain,h,'regress');
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -196,7 +196,8 @@ elseif punto==6
 
     %%% Se aplica la clasificaci�n con ventana de parzen %%%
     
-    h=0.05;
+    h=;
+
     Yesti=ventanaParzen(Xtest,Xtrain,Ytrain,h,'class');
 %     funcion2=ventanaParzen(Xtest,Xtrain2,Ytrain,h,'class');
 %     funcion3=ventanaParzen(Xtest,Xtrain3,Ytrain,h,'class');
