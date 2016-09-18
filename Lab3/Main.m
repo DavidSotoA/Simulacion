@@ -2,8 +2,9 @@
 clc
 clear all
 % close all
-
+addpath(genpath('netlab'));
 load('Data.mat');
+
 
 X=Data(:,1:6);
 Y=Data(:,end);
@@ -13,14 +14,14 @@ Rept=10;
 
 EficienciaTest=zeros(1,Rept);
 
-punto=3;
+punto=4;
 
 if punto==3
     
     %%% punto GMM %%%
      
     NumClases=length(unique(Y)); %%% Se determina el número de clases del problema. 
-    Mezclas=3; %%% Se determina el número de Gaussianas que tiene el modelo.
+    Mezclas=2; %%% Se determina el número de Gaussianas que tiene el modelo.
     
     for fold=1:Rept
 
@@ -45,7 +46,7 @@ if punto==3
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         %%% Entrenamiento de los modelos. Recuerde que es un modelo por cada clase. %%%
-        
+        tic;
         vInd=(Ytrain == 1);
         XtrainC1 = Xtrain(vInd,:);
         if ~isempty(XtrainC1)
@@ -69,7 +70,7 @@ if punto==3
         else
             error('No hay muestras de todas las clases para el entrenamiento');
         end
-        
+        toc;
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         %%% Validación de los modelos. %%%
@@ -127,16 +128,18 @@ elseif punto==4
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         %%% Entrenamiento de los modelos. Recuerde que es un modelo por cada clase. %%%
-
+        tic;
         Modelo=entrenarTREE(Xtrain,Ytrain);
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         %%% Validación de los modelos. %%%
         
-        NivelPoda=2;
+        NivelPoda=1;
         
         Modelo=prune(Modelo,'level',NivelPoda);
+        toc;
+        view(Modelo,'Mode','graph');
         Yest=testTREE(Modelo,Xtest);
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -178,16 +181,19 @@ elseif punto==5
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
         %%% Entrenamiento de los modelos. Recuerde que es un modelo por cada clase. %%%
-
         NumArboles=500;
+        tic;
         Modelo=entrenarFOREST(NumArboles,Xtrain,Ytrain);
+        toc;
 
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         %%% Validación de los modelos. %%%
         
         Yest=testFOREST(Modelo,Xtest);
-        
+        Yest = cell2mat(Yest);
+        Yest = str2num(Yest);
+
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
         MatrizConfusion = zeros(NumClases,NumClases);

@@ -13,7 +13,7 @@ Rept=10;
 
 EficienciaTest=zeros(1,Rept);
 
-punto=3;
+punto=5;
 
 if punto==3
     
@@ -134,9 +134,10 @@ elseif punto==4
         
         %%% Validación de los modelos. %%%
         
-        NivelPoda=2;
+        NivelPoda=1;
         
         Modelo=prune(Modelo,'level',NivelPoda);
+        %view(Modelo,'Mode','graph');
         Yest=testTREE(Modelo,Xtest);
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -186,7 +187,8 @@ elseif punto==5
         
         %%% Validación de los modelos. %%%
         
-        Yest=testFOREST(Modelo,Xtest);
+        Yest=testFOREST(Modelo,Xtest)
+        [C{2:,:}]
         
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         
