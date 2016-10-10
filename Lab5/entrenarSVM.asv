@@ -1,0 +1,3 @@
+function Modelo = entrenarSVM(X,Y,tipo,boxConstraint,sigma)
+    Modelo = trainlssvm({X,Y,tipo,regularizacion,parametroKernel,kernel});
+end
