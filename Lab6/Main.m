@@ -79,6 +79,30 @@ elseif (punto == 2)
          [caracteristicasElegidas, ~] = sequentialfs(@funcionForest,Xtrain,Ytrain,'direction',sentido,'options',opciones);
          XReducidas = X(:, caracteristicasElegidas);
          eleccion=[eleccion,caracteristicasElegidas];
-    end
+         [NumMuestras,~] = size(XReducidas);
+         indices=randperm(NumMuestras);
+         porcionEntrenamiento = round(NumMuestras*0.7);
+         Xtrain=XReducidas (indices(1:porcionEntrenamiento),:);
+         Xtest=XReducidas(indices(porcionEntrenamiento+1:end),:);
+         Ytrain=Y(indices(1:porcionEntrenamiento),:);
+         Ytest=Y(indices(porcionEntrenamiento+1:end),:);
+        
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        
+        % Se hace el entrenamiento del modelo
+        NumArboles=10;
+        Modelo = TreeBagger(NumArboles,Xtrain,Ytrain);
 
+        Yest = predict(Modelo,Xtest);
+        Yest = str2double(Yest);
+        
+        EficienciaTest(fold) = sum(Ytest == Yest)/length(Ytest);
+    end
+    
+    Eficiencia = mean(EficienciaTest);
+    IC = std(EficienciaTest);
+    Texto=['La eficiencia obtenida fue = ', num2str(Eficiencia),' +- ',num2str(IC)];
+    disp(Texto);
+    
+    %%%%%%%%% Fin punto 2
 end
