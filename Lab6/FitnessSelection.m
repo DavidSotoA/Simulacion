@@ -13,9 +13,13 @@ for i = 1: Ncromosomas % Se debe evaluar cada individuo de la población
         Ytest = Y(CVO.test(j));
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         %------------------------------------------------------------------
-        Yest = classify(Xtest,Xtrain,Ytrain);% Se usa una Función Discriminante Gausiana como criterio
-        %------------------------------------------------------------------
-        Error(j) = sum(Ytest ~= Yest)/length(Yest);
+        
+% % % % %         Yest = classify(Xtest,Xtrain,Ytrain);% Se usa una Función Discriminante Gausiana como criterio
+% % % % %         %------------------------------------------------------------------
+% % % % %         Error(j) = sum(Ytest ~= Yest)/length(Yest);
+
+        Error(j) = funcionForest(Xtrain,Ytrain,Xtest,Ytest); % Se usa Random Forest como cirterio
+        
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     end
     Costos(i) = mean(Error);
