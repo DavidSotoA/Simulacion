@@ -2,64 +2,71 @@ K VECINOS
 
 
 Y1
-La eficiencia obtenida con 9 vecinos fue de 0.438977 +- 0.016631 
+La eficiencia obtenida con 9 vecinos fue de 0.552854 +- 0.012645 
 La presicion es:  
-clase 1: 0.465462 +- 0.024202
-clase 2: 0.421111 +- 0.028065
-clase 3: 0.422805 +- 0.037583
+clase 1: 0.574280 +- 0.027772
+clase 2: 0.523705 +- 0.037898
+clase 3: 0.560686 +- 0.023614
 el recall es:  
-clase 1: 0.547135 +-  0.046891
-clase 2: 0.389731 +-  0.031413
-clase 3: 0.381675 +-  0.042074
-SMV
-
-
-Y1
-La eficiencia obtenida con 1.000000 gamma y boxcontraint de 10.000000 fue de 0.598639 +- 0.024702 
-La presicion es:  
-clase 1: 0.613121 +- 0.032561
-clase 2: 0.555899 +- 0.042067
-clase 3: 0.634805 +- 0.043960
-el recall es:  
-clase 1: 0.712315 +-  0.032789
-clase 2: 0.580663 +-  0.033631
-clase 3: 0.502854 +-  0.037221
-SMV
-
-
-Y1
-La eficiencia obtenida con 1.000000 gamma y boxcontraint de 10.000000 fue de 0.634047 +- 0.019467 
-La presicion es:  
-clase 1: 0.670365 +- 0.032558
-clase 2: 0.590453 +- 0.052859
-clase 3: 0.641115 +- 0.028545
-el recall es:  
-clase 1: 0.722687 +-  0.031401
-clase 2: 0.602620 +-  0.039428
-clase 3: 0.576491 +-  0.026375
-SMV
-
-
-Y1
-La eficiencia obtenida con 1.000000 gamma y boxcontraint de 10.000000 fue de 0.626556 +- 0.018777 
-La presicion es:  
-clase 1: 0.657122 +- 0.039660
-clase 2: 0.576867 +- 0.047535
-clase 3: 0.648034 +- 0.035531
-el recall es:  
-clase 1: 0.728026 +-  0.018327
-clase 2: 0.588332 +-  0.033337
-clase 3: 0.563250 +-  0.036902
-SMV
-
+clase 1: 0.632863 +-  0.035501
+clase 2: 0.520888 +-  0.024883
+clase 3: 0.507062 +-  0.033872
 
 Y2
-La eficiencia obtenida con 1.000000 gamma y boxcontraint de 10.000000 fue de 0.646124 +- 0.010735 
+La eficiencia obtenida con 9 vecinos fue de 0.564254 +- 0.015862 
 La presicion es:  
-clase 1: 0.659585 +- 0.025946
-clase 2: 0.614159 +- 0.028595
-clase 3: 0.666412 +- 0.032689
+clase 1: 0.588368 +- 0.027840
+clase 2: 0.543804 +- 0.026553
+clase 3: 0.557656 +- 0.040564
 el recall es:  
-clase 1: 0.731012 +-  0.031757
-clase 2: 0.624886 +-  0.034143
-clase 3: 0.581556 +-  0.024275
+clase 1: 0.639372 +-  0.028169
+clase 2: 0.533249 +-  0.017653
+clase 3: 0.521050 +-  0.037493
+RANDOM FOREST
+
+
+Y1
+La eficiencia obtenida con 500 arboles fue de 0.556090 +- 0.021710 
+La presicion es:  
+clase 1: 0.625411 +- 0.030263
+clase 2: 0.524042 +- 0.052641
+clase 3: 0.528485 +- 0.034126
+el recall es:  
+clase 1: 0.586384 +-  0.042294
+clase 2: 0.539075 +-  0.032511
+clase 3: 0.545318 +-  0.036842
+
+Y2
+La eficiencia obtenida con 500 arboles fue de 0.567997 +- 0.008059 
+La presicion es:  
+clase 1: 0.621555 +- 0.036056
+clase 2: 0.550957 +- 0.031868
+clase 3: 0.537338 +- 0.025177
+el recall es:  
+clase 1: 0.580707 +-  0.035393
+clase 2: 0.526557 +-  0.038741
+clase 3: 0.597256 +-  0.024386
+SMV
+
+
+Y1
+La eficiencia obtenida con 1.000000 gamma y boxcontraint de 10.000000 fue de 0.546721 +- 0.020708 
+La presicion es:  
+clase 1: 0.574191 +- 0.026702
+clase 2: 0.507032 +- 0.041523
+clase 3: 0.558031 +- 0.037585
+el recall es:  
+clase 1: 0.667309 +-  0.024267
+clase 2: 0.519781 +-  0.027717
+clase 3: 0.453757 +-  0.044941
+
+Y2
+La eficiencia obtenida con 1.000000 gamma y boxcontraint de 10.000000 fue de 0.565277 +- 0.012064 
+La presicion es:  
+clase 1: 0.584983 +- 0.028482
+clase 2: 0.538080 +- 0.020667
+clase 3: 0.569695 +- 0.033596
+el recall es:  
+clase 1: 0.677053 +-  0.017117
+clase 2: 0.534068 +-  0.015816
+clase 3: 0.485572 +-  0.032307
