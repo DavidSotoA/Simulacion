@@ -62,7 +62,7 @@ selectFeaturesY=[];
         end
     end
 %% extraccion de caracteristicas
-umbralPorcentajeDeVarianza=80;
+umbralPorcentajeDeVarianza=99.999;
 
 [coefCompPrincipales,~,~,~,porcentajeVarianzaExplicada,~] = pca(X);
 
@@ -72,9 +72,10 @@ umbralPorcentajeDeVarianza=80;
         break;
     end
  end
+ 
 
 aux = X*coefCompPrincipales;
-X = aux(:,1:numCompAdmitidos);
+X = aux(:,1:6);
 
 %%
 tic;
@@ -614,7 +615,6 @@ fclose(fid);
 %% mejores modelos
 
 %X = X(:, selectFeaturesY1==1);
-%umbralPorcentajeDeVarianza = 85;
 Rept=10;
 EficienciaTest=zeros(1,Rept);
 NumClases=length(unique(Y));
@@ -624,7 +624,7 @@ NumMuestras=size(X,1);
 vecinos=[9];
 fid=fopen('datos.txt','w');
 fprintf(fid, 'K VECINOS\n\n');
-for m=1:1
+for m=1:2
     y=Y(:,m);
     fprintf(fid, '\nY%d\n',m);
     for i=1:length(vecinos)
@@ -688,7 +688,7 @@ for m=1:1
     end
 end
 fclose(fid);
-%%
+
 NumMuestras=size(X,1); 
 Rept=10;
 %X = X(:, selectFeaturesY1==1);
@@ -700,7 +700,7 @@ arboles=[500];
 fid=fopen('datos.txt','a');
 fprintf(fid, 'RANDOM FOREST\n\n');
 
-for m=1:1
+for m=1:2
     y=Y(:,m);
     fprintf(fid, '\nY%d\n',m);
     for i=1:length(arboles)
@@ -778,7 +778,7 @@ for m=1:1
     end
 end
 fclose(fid);
-%%
+
 NumMuestras=size(X,1); 
 Rept=10;
 
@@ -792,7 +792,7 @@ boxConstraint=[10];
 
 fid=fopen('datos.txt','a');
 fprintf(fid, 'SMV\n\n');
-for m=2:2
+for m=1:2
     y=Y(:,m);
     fprintf(fid, '\nY%d\n',m);
     for j=1:length(boxConstraint)
