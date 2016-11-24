@@ -1,7 +1,7 @@
 clear all;
 clc;
 
-archivo=importdata('C:\Users\Usuario\Desktop\parkinsons_updrs.data');
+archivo=importdata('\parkinsons_updrs.data');
 datos=archivo.data;
 Y1=datos(:,5);
 Y2=datos(:,6);
@@ -23,9 +23,7 @@ Y2(Y2>=p3 & Y2<=(max(Y2)))=3;
 
 Y=[Y1 Y2];
 selectFeaturesY1=[1 1 1 0 0 0 1 0 0 1 1 1 1 1 1 1];
-%selectFeaturesY1=[0 1 0 0 1 0 1 0 0 0 1 0 1 0 1 1];
 selectFeaturesY2=[1 1 1 0 0 1 0 1 0 0 0 1 1 1 1 1];
-selectFeaturesY=[];
 
 %% seleccion de caracteristiscas
  opciones = statset('display','iter');
@@ -219,7 +217,7 @@ for m=1:2
 end
 fclose(fid);
 toc;
-%%
+
 %load('DatosClasificacion.mat');
 %Xclas=Xclas(:,1:3);
 %NumMuestras=size(Xclas,1); 
@@ -295,7 +293,7 @@ for m=1:2
     end
 end
 fclose(fid);
-%%
+
 Rept=10;
 EficienciaTest=zeros(1,Rept);
 NumClases=length(unique(Y1));
@@ -384,7 +382,7 @@ for h=1:2
     end
 end
 fclose(fid);
-%%
+
 
 %addpath(genpath('netlab'));
 % load('Data.mat');
@@ -419,7 +417,9 @@ for m=1:1
             Xtest=X(particion.test(fold),:);
             Ytrain=Y(particion.training(fold));
             Ytest=Y(particion.test(fold));
-
+                
+            [Xtrain,mu,sigma]=zscore(Xtrain);
+            Xtest=(Xtest - repmat(mu,size(Xtest,1),1))./repmat(sigma,size(Xtest,1),1);
 
             %%% Entrenamiento de los modelos. Recuerde que es un modelo por cada clase. %%%
             Modelo=entrenarFOREST(arboles(i),Xtrain,Ytrain);
@@ -479,7 +479,7 @@ for m=1:1
     end
 end
 fclose(fid);
-%%
+
 
 %load('DatosClasificacion.mat');
 % 
@@ -492,7 +492,6 @@ RecallTest=zeros(Rept,NumClases);
 PrecisionTest=zeros(Rept,NumClases);
 gamma=[1,1.5,2,2.5,3,4,5,6];
 boxConstraint=[1,10,100,200,500,1000];
-kernel=['linear','quadratic','polynomial'];
 fid=fopen('datos.txt','a');
 fprintf(fid, 'SMV\n\n');
 for t=1:3
@@ -624,7 +623,7 @@ NumMuestras=size(X,1);
 vecinos=[9];
 fid=fopen('datos.txt','w');
 fprintf(fid, 'K VECINOS\n\n');
-for m=1:2
+for m=1:1
     y=Y(:,m);
     fprintf(fid, '\nY%d\n',m);
     for i=1:length(vecinos)
@@ -688,7 +687,7 @@ for m=1:2
     end
 end
 fclose(fid);
-
+%%
 NumMuestras=size(X,1); 
 Rept=10;
 %X = X(:, selectFeaturesY1==1);
